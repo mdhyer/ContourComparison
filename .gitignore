@@ -80,6 +80,7 @@ data/
 models/
 results/
 PrecomputeContours/
+Params/
 
 # OS
 .DS_Store
@@ -108,3 +109,7 @@ Whistle_IND_SLSNR.py
 !Projects/**/*.txt
 !Projects/**/*.png
 !Projects/**/*.npy
+!Projects/**/data/
+!Projects/**/results/
+!Projects/**/PrecomputeContours/
+!Projects/**/Params/

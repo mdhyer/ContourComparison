@@ -24,14 +24,14 @@ dependencies = [
     "tqdm",
     "pydantic>=2.0",
     "python-dotenv",
-    "PyQt6"
+    "PyQt6",
+    "librosa"
 ]
 
 [project.optional-dependencies]
 models = [
     "torch",
-    "torchcrepe",
-    "librosa"
+    "torchcrepe"
 ]
 dev = [
     "pytest",
