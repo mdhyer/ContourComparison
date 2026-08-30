@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "audio-analysis"
+version = "0.1.0"
+description = "Code to reproduce results from Tyarks et al.: Mind the Gap: Performance Limits of Automated Contour Extraction Methods for Individual Monitoring of Bottlenose Dolphins"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Matthew D. Hyer", email = "mhyer.eco@gmail.com"},
+    {name = "Saskia C. Tyarks", email = "saskiatyarks@gmail.com"},
+    {name = "Frants H. Jensen", email = "frants.jensen@gmail.com"}
+]
+dependencies = [
+    "numpy",
+    "scipy",
+    "soundfile",
+    "resampy",
+    "dtw-python",
+    "matplotlib",
+    "tqdm",
+    "pydantic>=2.0",
+    "python-dotenv",
+    "PyQt6"
+]
+
+[project.optional-dependencies]
+models = [
+    "torch",
+    "torchcrepe",
+    "librosa"
+]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-benchmark",
+    "black",
+    "flake8",
+    "isort",
+    "mypy",
+    "pdoc3",
+]
+
+[project.scripts]
+audio-analysis = "audio_analysis.cli:main"
+audio-analysis-gui = "audio_analysis.gui.__main__:run_gui"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+# Coverage flags removed to allow pytest to run without pytest-cov installed.
+# Re-add "--cov=src/audio_analysis --cov-report=term-missing --cov-fail-under=80" after installing pytest-cov.
+addopts = "-v"
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.pdoc]
+output_directory = "docs/api"
+html = true
+force = true
